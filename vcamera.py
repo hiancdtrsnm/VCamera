@@ -10,7 +10,7 @@ from ctypes import c_bool
 virtual = lambda f: f
 
 class VCamera(Process):
-    def __init__(self, in_dev_name='/dev/video0', out_dev_name='/dev/video1',
+    def __init__(self, in_dev_name='/dev/video1', out_dev_name='/dev/video2',
             flip=False, queue=False):
         Process.__init__(self)
         self.in_dev_name = in_dev_name
@@ -21,7 +21,8 @@ class VCamera(Process):
 
     def setup(self):
         # prepare input camera to capture frames
-        self.in_dev = cv2.VideoCapture(0)#self.in_dev_name)
+        cam_id = int(self.in_dev_name[len('/dev/video'):])
+        self.in_dev = cv2.VideoCapture(cam_id)#self.in_dev_name)
         ok, im = self.in_dev.read()
         if not ok:
             raise IOError('Unable to read frames from device %s' % self.in_dev_name)
