@@ -5,7 +5,7 @@ app = Bottle()
 
 @app.route('/')
 def index():
-    return template('camera-select.html', template_lookup=['templates'])
+    return template('index.html', template_lookup=['templates'])
 
 @app.route('/static/<res:path>')
 def static(res):

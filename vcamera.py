@@ -10,7 +10,7 @@ from ctypes import c_bool
 virtual = lambda f: f
 
 class VCamera(Process):
-    def __init__(self, in_dev_name='/dev/video1', out_dev_name='/dev/video2',
+    def __init__(self, in_dev_name='/dev/video0', out_dev_name='/dev/video1',
             flip=False, queue=False):
         Process.__init__(self)
         self.in_dev_name = in_dev_name
